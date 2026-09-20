@@ -2,8 +2,8 @@
 
 ## Thông tin
 
-- Họ và tên: Hà Mạnh Tuấn
-- Mã học viên: Chưa cung cấp
+- Họ và tên: Hà Mạnh Tuân
+- Mã học viên: 2A202602982
 - Nhóm: G36
 - Repository/branch: [tuanfptu/K4-L3A-RAG-Pipeline-TeamG36](https://github.com/tuanfptu/K4-L3A-RAG-Pipeline-TeamG36) — `main`
 
