@@ -1,0 +1,813 @@
+{
+  "dataset_size": 16,
+  "top_k": 5,
+  "embedding_provider": "sentence_transformers",
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "reranker_provider": "gemini-or-safe-fallback",
+  "metrics": {
+    "semantic": {
+      "source_hit_at_k": 0.9375,
+      "mrr": 0.8875,
+      "context_token_recall": 0.6927,
+      "avg_latency_ms": 1714.04
+    },
+    "hybrid_rrf": {
+      "source_hit_at_k": 1.0,
+      "mrr": 0.9583,
+      "context_token_recall": 0.7166,
+      "avg_latency_ms": 1743.35
+    },
+    "hybrid_reranker": {
+      "source_hit_at_k": 1.0,
+      "mrr": 0.9583,
+      "context_token_recall": 0.7166,
+      "avg_latency_ms": 2752.65
+    }
+  },
+  "cases": [
+    {
+      "index": 1,
+      "question": "Chất ma túy được định nghĩa như thế nào theo Luật Phòng, chống ma túy số 73/2021/QH14?",
+      "source_id": "luat_73_2021",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.88,
+          "latency_ms": 26986.85,
+          "retrieved_ids": [
+            "luat_73_2021::p6::article11::chunk-0",
+            "luat_73_2021::p6::article11::clause1::chunk-0",
+            "nd163_2026::p74::article88::clause8::chunk-0",
+            "luat_73_2021::p31::clause2::chunk-0",
+            "luat_73_2021::p1::article2::clause1::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.44,
+          "latency_ms": 27373.01,
+          "retrieved_ids": [
+            "luat_73_2021::p31::clause2::chunk-0",
+            "luat_73_2021::p30::article55::clause1::chunk-2",
+            "luat_73_2021::p30::article55::chunk-2",
+            "luat_73_2021::p31::clause1::pointd::chunk-0",
+            "luat_73_2021::p6::article11::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.44,
+          "latency_ms": 29115.43,
+          "retrieved_ids": [
+            "luat_73_2021::p31::clause2::chunk-0",
+            "luat_73_2021::p30::article55::clause1::chunk-2",
+            "luat_73_2021::p30::article55::chunk-2",
+            "luat_73_2021::p31::clause1::pointd::chunk-0",
+            "luat_73_2021::p6::article11::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 2,
+      "question": "Tiền chất là gì theo Luật Phòng, chống ma túy?",
+      "source_id": "luat_73_2021",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.2258,
+          "latency_ms": 30.83,
+          "retrieved_ids": [
+            "luat_73_2021::p6::article11::chunk-0",
+            "luat_73_2021::p6::article11::clause1::chunk-0",
+            "nd163_2026::p74::article88::clause8::chunk-0",
+            "nd163_2026::p19::clause1::pointđ::chunk-0",
+            "nd163_2026::p61::article66::clause3::pointø::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.5484,
+          "latency_ms": 35.15,
+          "retrieved_ids": [
+            "luat_73_2021::p7::article12::chunk-2",
+            "luat_73_2021::p6::article11::chunk-0",
+            "nd163_2026::p53::article56::clause2::chunk-0",
+            "luat_73_2021::p6::article11::clause1::chunk-0",
+            "nd163_2026::p57::clause1::1689dfe7::chunk-3"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.5484,
+          "latency_ms": 912.62,
+          "retrieved_ids": [
+            "luat_73_2021::p7::article12::chunk-2",
+            "luat_73_2021::p6::article11::chunk-0",
+            "nd163_2026::p53::article56::clause2::chunk-0",
+            "luat_73_2021::p6::article11::clause1::chunk-0",
+            "nd163_2026::p57::clause1::1689dfe7::chunk-3"
+          ]
+        }
+      }
+    },
+    {
+      "index": 3,
+      "question": "Luật số 73/2021/QH14 điều chỉnh những nội dung chính nào?",
+      "source_id": "luat_73_2021",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.2973,
+          "latency_ms": 27.05,
+          "retrieved_ids": [
+            "luat_73_2021::p30::article54::chunk-0",
+            "luat_73_2021::p30::article54::clause2::chunk-0",
+            "nd163_2026::p69::article80::clause2::pointb::chunk-0",
+            "luat_73_2021::p30::article55::chunk-0",
+            "nd163_2026::p86::article104::clause2::pointa::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.3243,
+          "latency_ms": 30.45,
+          "retrieved_ids": [
+            "luat_73_2021::p30::article54::clause2::chunk-0",
+            "nd163_2026::p9::article11::chunk-0",
+            "luat_73_2021::p30::article54::chunk-0",
+            "nd163_2026::p57::article61::chunk-0",
+            "nd163_2026::p69::article80::clause2::pointb::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.3243,
+          "latency_ms": 1011.81,
+          "retrieved_ids": [
+            "luat_73_2021::p30::article54::clause2::chunk-0",
+            "nd163_2026::p9::article11::chunk-0",
+            "luat_73_2021::p30::article54::chunk-0",
+            "nd163_2026::p57::article61::chunk-0",
+            "nd163_2026::p69::article80::clause2::pointb::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 4,
+      "question": "Điều 5 Luật Phòng, chống ma túy có cấm trồng cây chứa chất ma túy không?",
+      "source_id": "luat_73_2021",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 1.0,
+          "latency_ms": 39.04,
+          "retrieved_ids": [
+            "luat_73_2021::p1::article2::clause6::chunk-0",
+            "luat_73_2021::p3::article5::chunk-0",
+            "luat_73_2021::p4::article5::clause12::chunk-0",
+            "nd163_2026::p32::article35::chunk-1",
+            "nd163_2026::p53::article55::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 1.0,
+          "latency_ms": 45.26,
+          "retrieved_ids": [
+            "luat_73_2021::p3::article5::chunk-0",
+            "luat_73_2021::p1::article2::clause6::chunk-0",
+            "nd163_2026::p53::article55::chunk-0",
+            "nd163_2026::p67::article77::clause3::chunk-0",
+            "luat_73_2021::p5::article6::clause4::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 1.0,
+          "latency_ms": 954.3,
+          "retrieved_ids": [
+            "luat_73_2021::p3::article5::chunk-0",
+            "luat_73_2021::p1::article2::clause6::chunk-0",
+            "nd163_2026::p53::article55::chunk-0",
+            "nd163_2026::p67::article77::clause3::chunk-0",
+            "luat_73_2021::p5::article6::clause4::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 5,
+      "question": "Hành vi chiếm đoạt chất ma túy, tiền chất có bị nghiêm cấm không?",
+      "source_id": "luat_73_2021",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.3684,
+          "latency_ms": 31.96,
+          "retrieved_ids": [
+            "luat_73_2021::p4::article5::clause12::chunk-0",
+            "nd163_2026::p53::article56::clause1::pointg::chunk-0",
+            "luat_73_2021::p21::article35::clause2::pointb::chunk-0",
+            "luat_73_2021::p2::article2::clause8::chunk-0",
+            "luat_73_2021::p18::clause2::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.8947,
+          "latency_ms": 37.13,
+          "retrieved_ids": [
+            "luat_73_2021::p4::article5::clause12::chunk-0",
+            "luat_73_2021::p4::article5::clause3::chunk-0",
+            "nd163_2026::p53::article56::clause1::pointg::chunk-0",
+            "luat_73_2021::p21::article35::clause2::pointb::chunk-0",
+            "luat_73_2021::p3::article5::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.8947,
+          "latency_ms": 934.02,
+          "retrieved_ids": [
+            "luat_73_2021::p4::article5::clause12::chunk-0",
+            "luat_73_2021::p4::article5::clause3::chunk-0",
+            "nd163_2026::p53::article56::clause1::pointg::chunk-0",
+            "luat_73_2021::p21::article35::clause2::pointb::chunk-0",
+            "luat_73_2021::p3::article5::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 6,
+      "question": "Nghị định 28/2026/NĐ-CP có hiệu lực từ ngày nào?",
+      "source_id": "nd28_2026",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9,
+          "latency_ms": 30.43,
+          "retrieved_ids": [
+            "nd28_2026::p2-3::article3::chunk-0",
+            "nd28_2026::p2::article3::clause1::chunk-0",
+            "luat_73_2021::p30::article54::clause1::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-1",
+            "nd28_2026::p3::article3::clause2::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9,
+          "latency_ms": 34.49,
+          "retrieved_ids": [
+            "nd28_2026::p2-3::article3::chunk-0",
+            "nd28_2026::p2::article3::clause1::chunk-0",
+            "luat_73_2021::p30::article54::clause1::chunk-0",
+            "luat_73_2021::p30::article54::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-1"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9,
+          "latency_ms": 914.71,
+          "retrieved_ids": [
+            "nd28_2026::p2-3::article3::chunk-0",
+            "nd28_2026::p2::article3::clause1::chunk-0",
+            "luat_73_2021::p30::article54::clause1::chunk-0",
+            "luat_73_2021::p30::article54::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-1"
+          ]
+        }
+      }
+    },
+    {
+      "index": 7,
+      "question": "Các tổ chức, cá nhân kinh doanh hợp pháp Etomidate phải áp dụng quy định quản lý chất ma túy từ khi nào?",
+      "source_id": "nd28_2026",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9412,
+          "latency_ms": 27.66,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause3::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-2",
+            "nd163_2026::p2::article3::chunk-5",
+            "nd163_2026::p2::article3::clause3::chunk-2",
+            "bocongan_20260706_etomidate_quang_ninh::chunk-8"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.8824,
+          "latency_ms": 34.58,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause3::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-2",
+            "nd163_2026::p56::article59::chunk-0",
+            "luat_73_2021::p11::article23::chunk-0",
+            "nd163_2026::p2::article3::chunk-5"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.8824,
+          "latency_ms": 949.37,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause3::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-2",
+            "nd163_2026::p56::article59::chunk-0",
+            "luat_73_2021::p11::article23::chunk-0",
+            "nd163_2026::p2::article3::chunk-5"
+          ]
+        }
+      }
+    },
+    {
+      "index": 8,
+      "question": "Bộ nào quản lý nhà nước về tiền chất sử dụng trong lĩnh vực công nghiệp?",
+      "source_id": "nd28_2026",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.7857,
+          "latency_ms": 29.58,
+          "retrieved_ids": [
+            "nd28_2026::p2::article2::clause2::chunk-0",
+            "nd28_2026::p2::article2::chunk-1",
+            "nd28_2026::p2::article2::clause1::chunk-0",
+            "nd28_2026::p2::article2::chunk-0",
+            "nd28_2026::p2::article2::clause5::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.75,
+          "latency_ms": 34.47,
+          "retrieved_ids": [
+            "nd28_2026::p2::article2::clause2::chunk-0",
+            "nd28_2026::p2::article2::chunk-1",
+            "nd28_2026::p2::article2::clause5::chunk-0",
+            "nd28_2026::p2::article2::clause1::chunk-0",
+            "nd28_2026::p2::article2::chunk-2"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.75,
+          "latency_ms": 1022.51,
+          "retrieved_ids": [
+            "nd28_2026::p2::article2::clause2::chunk-0",
+            "nd28_2026::p2::article2::chunk-1",
+            "nd28_2026::p2::article2::clause5::chunk-0",
+            "nd28_2026::p2::article2::clause1::chunk-0",
+            "nd28_2026::p2::article2::chunk-2"
+          ]
+        }
+      }
+    },
+    {
+      "index": 9,
+      "question": "Bộ Y tế có trách nhiệm gì đối với chất ma túy và tiền chất dùng trong y tế?",
+      "source_id": "nd28_2026",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.7667,
+          "latency_ms": 26.86,
+          "retrieved_ids": [
+            "nd28_2026::p2::article2::clause3::chunk-0",
+            "nd163_2026::p37::pointb::chunk-0",
+            "nd163_2026::p19::clause1::pointc::chunk-0",
+            "luat_73_2021::p29::article49::chunk-0",
+            "nd163_2026::p61::article68::chunk-1"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.7667,
+          "latency_ms": 32.81,
+          "retrieved_ids": [
+            "nd28_2026::p2::article2::clause3::chunk-0",
+            "nd163_2026::p37::pointb::chunk-0",
+            "nd28_2026::p2::article2::chunk-1",
+            "nd163_2026::p19::clause1::pointc::chunk-0",
+            "nd28_2026::p2::article2::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.7667,
+          "latency_ms": 1055.53,
+          "retrieved_ids": [
+            "nd28_2026::p2::article2::clause3::chunk-0",
+            "nd163_2026::p37::pointb::chunk-0",
+            "nd28_2026::p2::article2::chunk-1",
+            "nd163_2026::p19::clause1::pointc::chunk-0",
+            "nd28_2026::p2::article2::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 10,
+      "question": "Khi phát hiện chất mới chưa có trong danh mục nhưng liên quan mục đích bất hợp pháp, cơ quan nào chủ trì đề xuất cập nhật?",
+      "source_id": "nd28_2026",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.7812,
+          "latency_ms": 30.34,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause6::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-4",
+            "nd163_2026::p26::article30::clause2::pointd::chunk-0",
+            "nd163_2026::p6::article6::clause2::chunk-0",
+            "nd163_2026::p39::article41::clause3::pointa::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.75,
+          "latency_ms": 38.26,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause6::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-4",
+            "nd163_2026::p26::article30::clause2::pointd::chunk-0",
+            "nd28_2026::p40::article37::point1::chunk-0",
+            "nd163_2026::p6::article6::clause2::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.75,
+          "latency_ms": 1122.26,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause6::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-4",
+            "nd163_2026::p26::article30::clause2::pointd::chunk-0",
+            "nd28_2026::p40::article37::point1::chunk-0",
+            "nd163_2026::p6::article6::clause2::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 11,
+      "question": "Pod Chill chứa Etomidate có thể gây những tác hại sức khỏe nào?",
+      "source_id": "vtv_20260725_pod_chill_etomidate",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9667,
+          "latency_ms": 26.51,
+          "retrieved_ids": [
+            "vtv_20260725_pod_chill_etomidate::chunk-0",
+            "vtv_20260725_pod_chill_etomidate::chunk-11",
+            "vtv_20260725_pod_chill_etomidate::chunk-2",
+            "vtv_20260725_pod_chill_etomidate::chunk-10",
+            "bocongan_20260828_etomidate_hanoi::chunk-8"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9333,
+          "latency_ms": 30.69,
+          "retrieved_ids": [
+            "vtv_20260725_pod_chill_etomidate::chunk-2",
+            "bocongan_20260828_etomidate_hanoi::chunk-8",
+            "bocongan_20260706_etomidate_quang_ninh::chunk-3",
+            "vtv_20260725_pod_chill_etomidate::chunk-11",
+            "vtv_20260725_pod_chill_etomidate::chunk-9"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9333,
+          "latency_ms": 925.26,
+          "retrieved_ids": [
+            "vtv_20260725_pod_chill_etomidate::chunk-2",
+            "bocongan_20260828_etomidate_hanoi::chunk-8",
+            "bocongan_20260706_etomidate_quang_ninh::chunk-3",
+            "vtv_20260725_pod_chill_etomidate::chunk-11",
+            "vtv_20260725_pod_chill_etomidate::chunk-9"
+          ]
+        }
+      }
+    },
+    {
+      "index": 12,
+      "question": "Vì sao người dùng có thể lầm tưởng Pod Chill chứa Etomidate không phải ma túy?",
+      "source_id": "vtv_20260725_pod_chill_etomidate",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.9167,
+          "latency_ms": 27.41,
+          "retrieved_ids": [
+            "vtv_20260725_pod_chill_etomidate::chunk-0",
+            "vtv_20260725_pod_chill_etomidate::chunk-10",
+            "vtv_20260725_pod_chill_etomidate::chunk-11",
+            "vtv_20260725_pod_chill_etomidate::chunk-2",
+            "bocongan_20260706_etomidate_quang_ninh::chunk-3"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.8333,
+          "latency_ms": 32.67,
+          "retrieved_ids": [
+            "vtv_20260725_pod_chill_etomidate::chunk-2",
+            "vtv_20260725_pod_chill_etomidate::chunk-9",
+            "vtv_20260725_pod_chill_etomidate::chunk-11",
+            "vtv_20260725_pod_chill_etomidate::chunk-1",
+            "vtv_20260725_pod_chill_etomidate::chunk-7"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.8333,
+          "latency_ms": 956.82,
+          "retrieved_ids": [
+            "vtv_20260725_pod_chill_etomidate::chunk-2",
+            "vtv_20260725_pod_chill_etomidate::chunk-9",
+            "vtv_20260725_pod_chill_etomidate::chunk-11",
+            "vtv_20260725_pod_chill_etomidate::chunk-1",
+            "vtv_20260725_pod_chill_etomidate::chunk-7"
+          ]
+        }
+      }
+    },
+    {
+      "index": 13,
+      "question": "Đường dây Etomidate tại TP. Hồ Chí Minh bị xử lý bao nhiêu đối tượng?",
+      "source_id": "bocongan_20260802_etomidate_hcm",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.5,
+          "latency_ms": 25.9,
+          "retrieved_ids": [
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260828_etomidate_hanoi::chunk-6",
+            "bocongan_20260828_etomidate_hanoi::chunk-3",
+            "nd163_2026::p10::article15::chunk-0",
+            "nd163_2026::p13-14::clause1::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.3571,
+          "latency_ms": 30.84,
+          "retrieved_ids": [
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260802_etomidate_hcm::chunk-17",
+            "bocongan_20260802_etomidate_hcm::chunk-18",
+            "vtv_20260725_pod_chill_etomidate::chunk-7",
+            "bocongan_20260802_etomidate_hcm::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.3571,
+          "latency_ms": 1453.1,
+          "retrieved_ids": [
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260802_etomidate_hcm::chunk-17",
+            "bocongan_20260802_etomidate_hcm::chunk-18",
+            "vtv_20260725_pod_chill_etomidate::chunk-7",
+            "bocongan_20260802_etomidate_hcm::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 14,
+      "question": "Tang vật chính trong vụ Etomidate tại TP. Hồ Chí Minh ngày 02/08/2026 gồm những gì?",
+      "source_id": "bocongan_20260802_etomidate_hcm",
+      "strategies": {
+        "semantic": {
+          "source_hit": false,
+          "source_rank": null,
+          "reciprocal_rank": 0.0,
+          "context_token_recall": 0.0,
+          "latency_ms": 26.6,
+          "retrieved_ids": [
+            "luat_73_2021::p29::chunk-0",
+            "luat_73_2021::p31::4459813f::chunk-0",
+            "luat_73_2021::p4::chunk-0",
+            "luat_73_2021::p26::chunk-0",
+            "luat_73_2021::p1::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.3611,
+          "latency_ms": 31.86,
+          "retrieved_ids": [
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260802_etomidate_hcm::chunk-1",
+            "bocongan_20260802_etomidate_hcm::chunk-18",
+            "luat_73_2021::p29::chunk-0",
+            "luat_73_2021::p31::4459813f::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.3611,
+          "latency_ms": 805.81,
+          "retrieved_ids": [
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260802_etomidate_hcm::chunk-1",
+            "bocongan_20260802_etomidate_hcm::chunk-18",
+            "luat_73_2021::p29::chunk-0",
+            "luat_73_2021::p31::4459813f::chunk-0"
+          ]
+        }
+      }
+    },
+    {
+      "index": 15,
+      "question": "Đường dây Pod Chill chứa Etomidate ở Móng Cái hoạt động tại địa phương nào?",
+      "source_id": "bocongan_20260717_pod_chill_quang_ninh",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 5,
+          "reciprocal_rank": 0.2,
+          "context_token_recall": 0.8788,
+          "latency_ms": 30.74,
+          "retrieved_ids": [
+            "vtv_20260725_pod_chill_etomidate::chunk-0",
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260802_etomidate_hcm::chunk-10",
+            "vtv_20260725_pod_chill_etomidate::chunk-7",
+            "bocongan_20260717_pod_chill_quang_ninh::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 3,
+          "reciprocal_rank": 0.3333333333333333,
+          "context_token_recall": 0.8485,
+          "latency_ms": 36.33,
+          "retrieved_ids": [
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260802_etomidate_hcm::chunk-1",
+            "bocongan_20260717_pod_chill_quang_ninh::chunk-0",
+            "bocongan_20260802_etomidate_hcm::chunk-10",
+            "vtv_20260725_pod_chill_etomidate::chunk-7"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 3,
+          "reciprocal_rank": 0.3333333333333333,
+          "context_token_recall": 0.8485,
+          "latency_ms": 932.97,
+          "retrieved_ids": [
+            "bocongan_20260802_etomidate_hcm::chunk-2",
+            "bocongan_20260802_etomidate_hcm::chunk-1",
+            "bocongan_20260717_pod_chill_quang_ninh::chunk-0",
+            "bocongan_20260802_etomidate_hcm::chunk-10",
+            "vtv_20260725_pod_chill_etomidate::chunk-7"
+          ]
+        }
+      }
+    },
+    {
+      "index": 16,
+      "question": "Các tổ chức, cá nhân kinh doanh hợp pháp 1,4-Butanediol phải áp dụng quy định quản lý tiền chất trước thời điểm nào?",
+      "source_id": "nd28_2026",
+      "strategies": {
+        "semantic": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.875,
+          "latency_ms": 26.9,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause4::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-2",
+            "nd163_2026::p48::article52::chunk-0",
+            "nd28_2026::p3::article3::clause3::chunk-0",
+            "nd163_2026::p25::clause7::chunk-0"
+          ]
+        },
+        "hybrid_rrf": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.875,
+          "latency_ms": 35.61,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause4::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-2",
+            "nd28_2026::p3::article3::clause3::chunk-0",
+            "nd163_2026::p48::article52::chunk-0",
+            "luat_73_2021::p3::article3::clause8::chunk-0"
+          ]
+        },
+        "hybrid_reranker": {
+          "source_hit": true,
+          "source_rank": 1,
+          "reciprocal_rank": 1.0,
+          "context_token_recall": 0.875,
+          "latency_ms": 975.83,
+          "retrieved_ids": [
+            "nd28_2026::p3::article3::clause4::chunk-0",
+            "nd28_2026::p2-3::article3::chunk-2",
+            "nd28_2026::p3::article3::clause3::chunk-0",
+            "nd163_2026::p48::article52::chunk-0",
+            "luat_73_2021::p3::article3::clause8::chunk-0"
+          ]
+        }
+      }
+    }
+  ]
+}
