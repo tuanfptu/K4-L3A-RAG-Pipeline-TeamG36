@@ -3,7 +3,7 @@
 ## Thông tin
 
 - **Họ và tên:** Lương Quang Huy
-- **Mã học viên:** (Điền MSSV của bạn)
+- **Mã học viên:** 2A202602698
 - **Nhóm:** Team G36
 - **Repository/branch:** `https://github.com/tuanfptu/K4-L3A-RAG-Pipeline-TeamG36` / branch `feature/chunking`
 
