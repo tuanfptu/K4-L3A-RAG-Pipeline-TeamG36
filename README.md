@@ -43,6 +43,16 @@ pytest -q
 streamlit run app.py
 ```
 
+Giao diện demo hiển thị trạng thái corpus/vector index trong sidebar, cung cấp
+câu hỏi in-domain và out-of-domain, đồng thời so sánh Semantic, Hybrid + RRF và
+Hybrid + Reranker trên cùng một màn hình. Trước lần demo đầu tiên, tạo index rồi
+khởi động app:
+
+```bash
+python -m src.task4_chunking_indexing
+streamlit run app.py
+```
+
 ## Lộ trình 3 giờ
 
 | Mốc                  | Thời gian | Kết quả cần có                           |
@@ -69,6 +79,7 @@ streamlit run app.py
 - [Grading rubric](docs/GRADING_RUBRIC.md): Rubric thang điểm.
 - [Individual report](group_project/ịndividual/INDIVIDUAL_REPORT.md): template báo cáo cá nhân.
 - [Suggested topics](docs/SUGGESTED_TOPICS.md): danh sách chủ đề tham khảo, không bắt buộc.
+- [Group report](reports/GROUP_REPORT.md): kiến trúc, phân công, số liệu corpus, benchmark và kịch bản demo.
 
 ## Kiểm tra
 

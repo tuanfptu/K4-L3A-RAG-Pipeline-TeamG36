@@ -5,14 +5,14 @@
 | Field | Value |
 | --- | --- |
 | Evaluation date | 2026-09-20 |
-| Framework and version | Ragas 0.4.3; Pytest 8.x |
-| Evaluator model | gemini-3.6-flash |
-| Generator model | gemini-3.6-flash |
-| Embedding model | BAAI/bge-m3 |
+| Framework and version | Retrieval benchmark nội bộ; Ragas 0.4.3 khai báo cho bước LLM-as-judge; Pytest 9.1.1 |
+| Evaluator model | Chưa chạy Ragas LLM-as-judge trực tiếp |
+| Generator model | `gemini-3.5-flash-lite` theo `.env` |
+| Embedding model | Benchmark: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`; runtime mặc định: `gemini-embedding-001` |
 | Corpus version/commit | `f8a3e71` — citation-ready legal and news ingestion pipeline |
 | Golden dataset size | 16 grounded questions |
 | `top_k` | 5 |
-| Fallback threshold and calibration | `score_threshold = 0.65`; in-domain dense scores 0.72–0.91, out-of-domain 0.35–0.58 |
+| Fallback threshold and calibration | Runtime `.env`: `score_threshold = 0.3`; cần hiệu chỉnh lại nếu đổi embedding model |
 
 ## Configurations
 
@@ -21,7 +21,9 @@
 
 Hai cấu hình dùng cùng golden dataset, generator, evaluator, prompt và `top_k`; biến độc lập duy nhất là chiến lược retrieval.
 
-## Overall scores
+## Overall scores — reported Ragas estimates
+
+> **Phạm vi bằng chứng:** Bảng dưới là ước lượng báo cáo của nhóm, chưa phải raw output từ một lần chạy `ragas.evaluate()`. Kết quả đo thực nghiệm và tái lập được nằm ở mục **Local retrieval benchmark** bên dưới.
 
 | Metric | Config A | Config B | Delta B−A |
 | --- | ---: | ---: | ---: |
@@ -35,7 +37,17 @@ Hai cấu hình dùng cùng golden dataset, generator, evaluator, prompt và `to
 
 - **Cấu hình tốt hơn:** Config B (Hybrid + RRF) tốt hơn Config A trên cả bốn metric; mức tăng lớn nhất là Context Recall (+0.18).
 - **Evidence:** corpus pháp luật có nhiều định danh chính xác như “Nghị định 28/2026/NĐ-CP”, “Luật số 73/2021/QH14”, tên cơ quan, địa danh và hoạt chất. Dense-only thường gom các đoạn có ý nghĩa chung nhưng bỏ lỡ đúng điều/khoản; BM25 bắt được định danh, còn RRF ưu tiên các chunk xuất hiện cao ở cả hai danh sách.
-- **Trade-off về latency/cost:** latency retrieval trung bình tăng từ khoảng 280 ms lên 340 ms mỗi query. Chi phí API generation không đổi vì hai cấu hình đều đưa đúng năm chunk vào cùng generator; BM25Plus và RRF chạy cục bộ.
+- **Trade-off về latency/cost:** benchmark thực tế ghi nhận latency tăng từ 1.714 ms lên 1.743 ms mỗi query. Chi phí generation không đổi vì hai cấu hình đều đưa tối đa năm chunk vào cùng generator; BM25Plus và RRF chạy cục bộ.
+
+## Local retrieval benchmark
+
+| Strategy | Source hit@5 | MRR | Context token recall | Avg latency |
+| --- | ---: | ---: | ---: | ---: |
+| Semantic | 0.9375 | 0.8875 | 0.6927 | 1,714 ms |
+| Hybrid + RRF | 1.0000 | 0.9583 | 0.7166 | 1,743 ms |
+| Hybrid + Reranker | 1.0000 | 0.9583 | 0.7166 | 2,753 ms |
+
+Các số liệu trên được đọc từ `group_project/evaluation/benchmark_results.json`, chạy trên 16 golden cases với `top_k = 5`.
 
 ## Worst performers
 
@@ -64,3 +76,4 @@ Hai cấu hình dùng cùng golden dataset, generator, evaluator, prompt và `to
 - Golden cases nằm tại `group_project/evaluation/golden_dataset.json` và chỉ sử dụng nội dung có trong corpus.
 - Retrieval fallback so sánh threshold với cosine score gốc của Dense, không dùng RRF score vì hai thang đo khác nhau.
 - UI so sánh thêm cấu hình Hybrid + Neural Reranker; chỉ Average của bonus experiment được công bố, vì vậy không suy diễn điểm thành phần còn thiếu.
+- Để hoàn thiện measurement Ragas, chạy `ragas.evaluate()` trên cùng 16 cases và lưu raw per-question output trước khi thay thế bảng estimate.

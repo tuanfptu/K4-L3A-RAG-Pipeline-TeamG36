@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from html import escape
 import json
 from pathlib import Path
@@ -18,13 +17,37 @@ load_dotenv()
 
 st.set_page_config(
     page_title="RAG Compare — Đối chiếu 3 pipeline",
-    page_icon="⚖️",
+    page_icon=":material/balance:",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 TOP_K = 5
 BENCHMARK_RESULTS = Path(__file__).parent / "group_project" / "evaluation" / "benchmark_results.json"
+ROOT = Path(__file__).parent
+
+DEMO_QUESTIONS = (
+    "Etomidate là gì và có nguy hiểm như thế nào?",
+    "Điều 5 Luật Phòng, chống ma túy cấm những hành vi nào?",
+    "Nghị định 28/2026/NĐ-CP quy định trách nhiệm quản lý ra sao?",
+    "Pod chill chứa Etomidate đã được phát hiện tại những địa phương nào?",
+    "Công thức làm bánh mì là gì?",
+)
+
+
+@st.cache_data(show_spinner=False)
+def _corpus_stats() -> dict[str, int]:
+    legal_records = 0
+    for path in (ROOT / "data" / "structured" / "legal").glob("*.jsonl"):
+        legal_records += sum(
+            1 for line in path.read_text(encoding="utf-8").splitlines() if line.strip()
+        )
+    return {
+        "sources": len(json.loads((ROOT / "data" / "sources.json").read_text(encoding="utf-8"))),
+        "pages": len(list((ROOT / "data" / "extracted" / "legal").glob("*/page_*.json"))),
+        "legal_records": legal_records,
+        "articles": len(list((ROOT / "data" / "structured" / "news").glob("*.json"))),
+    }
 
 
 GLOBAL_CSS = r"""
@@ -518,7 +541,7 @@ def _pipeline_error(message: str) -> dict[str, Any]:
 
 
 def run_comparison(query: str, top_k: int = TOP_K) -> dict[str, dict[str, Any]]:
-    """Retrieve once, create three rankings, then generate answers concurrently."""
+    """Retrieve once, create three rankings, then generate without API bursts."""
     from src.task4_chunking_indexing import CHROMA_DIR
     from src.task5_semantic_search import semantic_search
     from src.task6_lexical_search import lexical_search
@@ -544,20 +567,16 @@ def run_comparison(query: str, top_k: int = TOP_K) -> dict[str, dict[str, Any]]:
         return {method["key"]: _pipeline_error(message) for method in METHODS}
 
     outputs: dict[str, dict[str, Any]] = {}
-    with ThreadPoolExecutor(max_workers=3) as executor:
-        futures = {
-            executor.submit(_generate_answer, query, chunks): key
-            for key, chunks in rankings.items()
-        }
-        for future in as_completed(futures):
-            key = futures[future]
-            try:
-                outputs[key] = future.result()
-            except Exception as exc:
-                outputs[key] = {
-                    **_pipeline_error(f"Không thể sinh câu trả lời: {exc}"),
-                    "sources": rankings[key],
-                }
+    # Avoid a three-request Gemini burst on free-tier RPM. The comparison is
+    # slower but predictable and does not sacrifice any ranking evidence.
+    for key, chunks in rankings.items():
+        try:
+            outputs[key] = _generate_answer(query, chunks)
+        except Exception as exc:
+            outputs[key] = {
+                **_pipeline_error(f"Không thể sinh câu trả lời: {exc}"),
+                "sources": chunks,
+            }
     return outputs
 
 
@@ -613,6 +632,30 @@ def show_metrics() -> None:
 
 
 st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
+stats = _corpus_stats()
+with st.sidebar:
+    st.header("Điều khiển demo", icon=":material/tune:")
+    if (ROOT / "chroma_db").exists():
+        st.badge("Vector index sẵn sàng", color="green", icon=":material/check_circle:")
+    else:
+        st.badge("Chưa có vector index", color="orange", icon=":material/warning:")
+        st.caption("Chạy `python -m src.task4_chunking_indexing` trước khi demo truy vấn.")
+
+    st.metric("Nguồn", stats["sources"])
+    st.metric("Trang PDF", stats["pages"])
+    st.metric("Legal records", f'{stats["legal_records"]:,}')
+    st.caption(f'{stats["articles"]} bài viết · citation theo Điều/Khoản/Điểm và trang PDF')
+
+    selected_demo = st.selectbox("Câu hỏi mẫu", DEMO_QUESTIONS, key="demo_question")
+    run_demo = st.button(
+        "Chạy câu hỏi mẫu",
+        icon=":material/play_arrow:",
+        type="primary",
+        width="stretch",
+        key="run_demo",
+    )
+    st.caption("Ba chiến lược dùng chung corpus, generator và top-k = 5.")
+
 st.markdown(
     """
     <header class="topbar">
@@ -638,7 +681,7 @@ with bar_left:
         unsafe_allow_html=True,
     )
 with bar_right:
-    if st.button("Xem bảng metrics", icon=":material/analytics:", use_container_width=False):
+    if st.button("Xem bảng metrics", icon=":material/analytics:", width="content"):
         show_metrics()
 
 if "comparison" not in st.session_state:
@@ -646,7 +689,7 @@ if "comparison" not in st.session_state:
 if "last_query" not in st.session_state:
     st.session_state.last_query = ""
 
-query = st.chat_input("Hỏi về Luật Phòng, chống ma túy, Etomidate hoặc Pod Chill…")
+query = selected_demo if run_demo else st.chat_input("Hỏi về Luật Phòng, chống ma túy, Etomidate hoặc Pod Chill…")
 if query:
     cleaned_query = query.strip()
     if cleaned_query:

@@ -11,6 +11,7 @@ Hướng dẫn:
 import json
 import os
 import re
+import time
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -47,14 +48,31 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
         model_name = os.getenv("EMBEDDING_MODEL", "gemini-embedding-001")
 
         # Chia nhỏ thành các batch 50 items để không vượt quá giới hạn API
-        batch_size = 50
+        batch_size = int(os.getenv("EMBEDDING_BATCH_SIZE", "50"))
+        request_interval = float(os.getenv("EMBEDDING_REQUEST_INTERVAL_SECONDS", "4.2"))
         all_embeddings = []
         for i in range(0, len(texts), batch_size):
             batch = texts[i : i + batch_size]
-            response = client.models.embed_content(
-                model=model_name,
-                contents=batch,
-            )
+            last_error = None
+            for attempt in range(3):
+                try:
+                    response = client.models.embed_content(
+                        model=model_name,
+                        contents=batch,
+                    )
+                    time.sleep(request_interval)
+                    break
+                except Exception as exc:
+                    last_error = exc
+                    if attempt == 2:
+                        raise RuntimeError(
+                            f"Embedding batch {i // batch_size + 1} failed after 3 attempts"
+                        ) from exc
+                    delay = max(request_interval, 2**attempt)
+                    if "429" in str(exc) or "RESOURCE_EXHAUSTED" in str(exc):
+                        delay = max(delay, 60 * (attempt + 1))
+                    print(f"[RETRY] embedding batch in {delay:.1f}s: {exc}")
+                    time.sleep(delay)
             all_embeddings.extend([e.values for e in response.embeddings])
         return all_embeddings
     else:
@@ -104,9 +122,23 @@ def load_documents() -> list[dict]:
                 "title": x.get("document_title") or x.get("source_id") or path.stem,
                 "doc_type": "legal",
                 "url": x.get("source_url"),
+                "source_id": x.get("source_id"),
                 "document_number": x.get("document_number"),
+                "issued_date": x.get("issued_date"),
+                "effective_date": x.get("effective_date"),
+                "page_start": x.get("page_start"),
+                "page_end": x.get("page_end"),
+                "chapter_number": x.get("chapter_number"),
+                "section_number": x.get("section_number"),
                 "article_number": x.get("article_number"),
                 "clause_number": x.get("clause_number"),
+                "point_number": x.get("point_number"),
+                "legal_path": x.get("legal_path") or "",
+                "issuer": x.get("issuer"),
+                "trust_level": "official",
+                "structured_record_id": x.get("id"),
+                "file_name": x.get("file_name"),
+                "file_sha256": x.get("file_sha256"),
             }
             documents.append({
                 "id": x["id"],
@@ -122,6 +154,12 @@ def load_documents() -> list[dict]:
             "title": x.get("title") or path.stem,
             "doc_type": "news",
             "url": x.get("canonical_url") or x.get("url"),
+            "source_id": x.get("source_id") or path.stem,
+            "publisher": x.get("publisher"),
+            "published_date": x.get("published_date"),
+            "source_type": x.get("source_type"),
+            "trust_level": x.get("trust_level"),
+            "content_sha256": x.get("content_sha256"),
         }
         documents.append({
             "id": x.get("source_id") or path.stem,
