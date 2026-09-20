@@ -5,7 +5,7 @@
 ## Thông tin
 
 - Họ và tên: Đặng Quốc Cường
-- Mã học viên: (điền mã học viên của bạn)
+- Mã học viên: 2A202602466
 - Nhóm: Team G36
 - Repository/branch: `quoccuongdang` — https://github.com/tuanfptu/K4-L3A-RAG-Pipeline-TeamG36/tree/quoccuongdang
 
