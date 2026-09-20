@@ -1,0 +1,98 @@
+[
+  {
+    "question": "Chất ma túy được định nghĩa như thế nào theo Luật Phòng, chống ma túy số 73/2021/QH14?",
+    "expected_answer": "Chất ma túy là chất gây nghiện, chất hướng thần được quy định trong danh mục chất ma túy do Chính phủ ban hành.",
+    "expected_context": "Điều 2 Luật số 73/2021/QH14: Chất ma túy là chất gây nghiện, chất hướng thần được quy định trong danh mục chất ma túy do Chính phủ ban hành.",
+    "source_id": "luat_73_2021"
+  },
+  {
+    "question": "Tiền chất là gì theo Luật Phòng, chống ma túy?",
+    "expected_answer": "Tiền chất là hóa chất không thể thiếu trong quá trình điều chế, sản xuất chất ma túy và được quy định trong danh mục tiền chất do Chính phủ ban hành.",
+    "expected_context": "Điều 2 Luật số 73/2021/QH14: Tiền chất là hóa chất không thể thiếu được trong quá trình điều chế, sản xuất chất ma túy được quy định trong danh mục tiền chất do Chính phủ ban hành.",
+    "source_id": "luat_73_2021"
+  },
+  {
+    "question": "Luật số 73/2021/QH14 điều chỉnh những nội dung chính nào?",
+    "expected_answer": "Luật quy định về phòng, chống ma túy; quản lý người sử dụng trái phép chất ma túy; cai nghiện; trách nhiệm của cá nhân, gia đình, cơ quan, tổ chức; quản lý nhà nước và hợp tác quốc tế về phòng, chống ma túy.",
+    "expected_context": "Điều 1 Luật số 73/2021/QH14 quy định phạm vi điều chỉnh gồm phòng, chống ma túy, quản lý người sử dụng trái phép chất ma túy, cai nghiện, trách nhiệm các bên, quản lý nhà nước và hợp tác quốc tế.",
+    "source_id": "luat_73_2021"
+  },
+  {
+    "question": "Điều 5 Luật Phòng, chống ma túy có cấm trồng cây chứa chất ma túy không?",
+    "expected_answer": "Có. Điều 5 nghiêm cấm trồng và hướng dẫn trồng cây có chứa chất ma túy.",
+    "expected_context": "Điều 5 Khoản 1: Trồng cây có chứa chất ma túy, hướng dẫn trồng cây có chứa chất ma túy là hành vi bị nghiêm cấm.",
+    "source_id": "luat_73_2021"
+  },
+  {
+    "question": "Hành vi chiếm đoạt chất ma túy, tiền chất có bị nghiêm cấm không?",
+    "expected_answer": "Có. Điều 5 nghiêm cấm chiếm đoạt chất ma túy, tiền chất và các thuốc, nguyên liệu liên quan được luật liệt kê.",
+    "expected_context": "Điều 5 Khoản 3 nghiêm cấm chiếm đoạt chất ma túy, tiền chất, thuốc gây nghiện, thuốc hướng thần, thuốc tiền chất và thuốc thú y có chứa chất ma túy, tiền chất.",
+    "source_id": "luat_73_2021"
+  },
+  {
+    "question": "Nghị định 28/2026/NĐ-CP có hiệu lực từ ngày nào?",
+    "expected_answer": "Nghị định 28/2026/NĐ-CP có hiệu lực từ ngày 19 tháng 01 năm 2026.",
+    "expected_context": "Điều 3 Khoản 1 Nghị định 28/2026/NĐ-CP: Nghị định này có hiệu lực thi hành từ ngày 19 tháng 01 năm 2026.",
+    "source_id": "nd28_2026"
+  },
+  {
+    "question": "Các tổ chức, cá nhân kinh doanh hợp pháp Etomidate phải áp dụng quy định quản lý chất ma túy từ khi nào?",
+    "expected_answer": "Từ ngày 01 tháng 6 năm 2026.",
+    "expected_context": "Điều 3 Khoản 3 Nghị định 28/2026/NĐ-CP quy định tổ chức, cá nhân sản xuất, kinh doanh hợp pháp Carisoprodol, Etomidate thực hiện quy định quản lý chất ma túy kể từ ngày 01 tháng 6 năm 2026.",
+    "source_id": "nd28_2026"
+  },
+  {
+    "question": "Bộ nào quản lý nhà nước về tiền chất sử dụng trong lĩnh vực công nghiệp?",
+    "expected_answer": "Bộ Công Thương.",
+    "expected_context": "Điều 2 Khoản 2 Nghị định 28/2026/NĐ-CP: Bộ Công Thương có trách nhiệm quản lý nhà nước về các tiền chất sử dụng trong lĩnh vực công nghiệp.",
+    "source_id": "nd28_2026"
+  },
+  {
+    "question": "Bộ Y tế có trách nhiệm gì đối với chất ma túy và tiền chất dùng trong y tế?",
+    "expected_answer": "Bộ Y tế ban hành danh mục và quản lý nhà nước về các chất ma túy, tiền chất được sử dụng trong lĩnh vực y tế.",
+    "expected_context": "Điều 2 Khoản 3 Nghị định 28/2026/NĐ-CP giao Bộ Y tế ban hành danh mục và quản lý nhà nước về chất ma túy, tiền chất sử dụng trong lĩnh vực y tế.",
+    "source_id": "nd28_2026"
+  },
+  {
+    "question": "Khi phát hiện chất mới chưa có trong danh mục nhưng liên quan mục đích bất hợp pháp, cơ quan nào chủ trì đề xuất cập nhật?",
+    "expected_answer": "Bộ Công an chủ trì, phối hợp với các bộ và cơ quan liên quan để xem xét, trình Chính phủ sửa đổi, bổ sung và công bố danh mục.",
+    "expected_context": "Điều 3 Khoản 6 Nghị định 28/2026/NĐ-CP giao Bộ Công an chủ trì, phối hợp Bộ Y tế, Bộ Công Thương, Bộ Khoa học và Công nghệ, Bộ Nông nghiệp và Môi trường, Bộ Quốc phòng cùng cơ quan liên quan.",
+    "source_id": "nd28_2026"
+  },
+  {
+    "question": "Pod Chill chứa Etomidate có thể gây những tác hại sức khỏe nào?",
+    "expected_answer": "Có thể gây rối loạn ý thức, co giật, ức chế hô hấp và thậm chí tử vong.",
+    "expected_context": "VTV cảnh báo Etomidate tác động mạnh lên hệ thần kinh; việc sử dụng có thể gây rối loạn ý thức, co giật, ức chế hô hấp, thậm chí tử vong.",
+    "source_id": "vtv_20260725_pod_chill_etomidate"
+  },
+  {
+    "question": "Vì sao người dùng có thể lầm tưởng Pod Chill chứa Etomidate không phải ma túy?",
+    "expected_answer": "Do sản phẩm được quảng cáo sai lệch là không gây nghiện, hình thức giống thuốc lá điện tử thông thường và một số que thử nhanh phổ biến có thể không phát hiện Etomidate.",
+    "expected_context": "VTV nêu rằng Pod Chill được quảng cáo 'chỉ giúp thư giãn', 'không gây nghiện'; hình thức gần giống thuốc lá điện tử và một số que thử nhanh thông thường có thể không phát hiện Etomidate.",
+    "source_id": "vtv_20260725_pod_chill_etomidate"
+  },
+  {
+    "question": "Đường dây Etomidate tại TP. Hồ Chí Minh bị xử lý bao nhiêu đối tượng?",
+    "expected_answer": "Có 37 đối tượng: 30 đối tượng bị khởi tố, bắt tạm giam và 7 đối tượng tiếp tục được củng cố chứng cứ để xử lý.",
+    "expected_context": "Bộ Công an ngày 02/08/2026 cho biết 30 đối tượng bị khởi tố, bắt tạm giam và tiếp tục củng cố chứng cứ, xử lý 07 đối tượng.",
+    "source_id": "bocongan_20260802_etomidate_hcm"
+  },
+  {
+    "question": "Tang vật chính trong vụ Etomidate tại TP. Hồ Chí Minh ngày 02/08/2026 gồm những gì?",
+    "expected_answer": "Khoảng 10.000 ml tinh dầu chứa Etomidate, 1.460 đầu Pod Chill đã chứa ma túy, 13.500 vỏ đầu Pod rỗng, 595 thân máy hút Pod và dụng cụ pha chế.",
+    "expected_context": "Bộ Công an ghi nhận tang vật gồm khoảng 10.000 ml tinh dầu Etomidate trong 21 chai nhựa, 1.460 đầu Pod Chill, 13.500 vỏ đầu Pod rỗng, 595 thân máy và dụng cụ trộn, chiết rót.",
+    "source_id": "bocongan_20260802_etomidate_hcm"
+  },
+  {
+    "question": "Đường dây Pod Chill chứa Etomidate ở Móng Cái hoạt động tại địa phương nào?",
+    "expected_answer": "Tại thành phố Móng Cái, tỉnh Quảng Ninh.",
+    "expected_context": "Bài viết Bộ Công an ngày 17/07/2026 mô tả việc Công an tỉnh Quảng Ninh triệt phá đường dây mua bán, tổ chức sử dụng Etomidate dưới dạng Pod Chill tại Móng Cái.",
+    "source_id": "bocongan_20260717_pod_chill_quang_ninh"
+  },
+  {
+    "question": "Các tổ chức, cá nhân kinh doanh hợp pháp 1,4-Butanediol phải áp dụng quy định quản lý tiền chất trước thời điểm nào?",
+    "expected_answer": "Trước ngày 31 tháng 12 năm 2026.",
+    "expected_context": "Điều 3 Khoản 4 Nghị định 28/2026/NĐ-CP quy định tổ chức, cá nhân sản xuất, kinh doanh hợp pháp 1,4-Butanediol thực hiện quy định quản lý tiền chất trước ngày 31 tháng 12 năm 2026.",
+    "source_id": "nd28_2026"
+  }
+]
